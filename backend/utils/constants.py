@@ -1,0 +1,2 @@
+PAGE_SIZE = 4096
+DEFAULT_BASE_DIR = "data/db"

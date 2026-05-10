@@ -1,0 +1,9 @@
+{
+  "key_type": "int",
+  "overflow_threshold": 64,
+  "main_count": 1000,
+  "overflow_count": 0,
+  "head_area": "main",
+  "head_page": 0,
+  "head_slot": 0
+}

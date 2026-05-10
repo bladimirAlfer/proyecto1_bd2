@@ -1,0 +1,240 @@
+{
+  "tables": {
+    "ny10k": {
+      "name": "ny10k",
+      "columns": [
+        {
+          "name": "arrest_key",
+          "type": "int",
+          "index": "bplus"
+        },
+        {
+          "name": "arrest_date",
+          "type": "str"
+        },
+        {
+          "name": "pd_cd",
+          "type": "int"
+        },
+        {
+          "name": "ky_cd",
+          "type": "int"
+        },
+        {
+          "name": "ofns_desc",
+          "type": "str"
+        },
+        {
+          "name": "law_cat_cd",
+          "type": "str"
+        },
+        {
+          "name": "arrest_boro",
+          "type": "str"
+        },
+        {
+          "name": "arrest_precinct",
+          "type": "int"
+        },
+        {
+          "name": "age_group",
+          "type": "str"
+        },
+        {
+          "name": "perp_sex",
+          "type": "str"
+        },
+        {
+          "name": "perp_race",
+          "type": "str"
+        },
+        {
+          "name": "longitude",
+          "type": "float"
+        },
+        {
+          "name": "latitude",
+          "type": "float"
+        }
+      ],
+      "data_file": "/Users/bladimiralferez/Desktop/2026/bd2/Proyecto_1/data/db/tables/ny10k.tbl",
+      "indexes": {
+        "arrest_key": {
+          "table_name": "ny10k",
+          "column_name": "arrest_key",
+          "index_type": "bplus",
+          "file_path": "/Users/bladimiralferez/Desktop/2026/bd2/Proyecto_1/data/db/indexes/ny10k_arrest_key_bplus.idx",
+          "options": {}
+        }
+      },
+      "row_count": 10000
+    },
+    "nypd_hash_1000": {
+      "name": "nypd_hash_1000",
+      "columns": [
+        {
+          "name": "arrest_key",
+          "type": "int",
+          "index": "extendible_hash"
+        },
+        {
+          "name": "arrest_date",
+          "type": "str"
+        },
+        {
+          "name": "pd_cd",
+          "type": "int"
+        },
+        {
+          "name": "ky_cd",
+          "type": "int"
+        },
+        {
+          "name": "ofns_desc",
+          "type": "str"
+        },
+        {
+          "name": "law_cat_cd",
+          "type": "str"
+        },
+        {
+          "name": "arrest_boro",
+          "type": "str"
+        },
+        {
+          "name": "arrest_precinct",
+          "type": "int"
+        },
+        {
+          "name": "age_group",
+          "type": "str"
+        },
+        {
+          "name": "perp_sex",
+          "type": "str"
+        },
+        {
+          "name": "perp_race",
+          "type": "str"
+        },
+        {
+          "name": "longitude",
+          "type": "float"
+        },
+        {
+          "name": "latitude",
+          "type": "float"
+        }
+      ],
+      "data_file": "/Users/bladimiralferez/Desktop/2026/bd2/Proyecto_1/data/db/tables/nypd_hash_1000.tbl",
+      "indexes": {
+        "arrest_key": {
+          "table_name": "nypd_hash_1000",
+          "column_name": "arrest_key",
+          "index_type": "extendible_hash",
+          "file_path": "/Users/bladimiralferez/Desktop/2026/bd2/Proyecto_1/data/db/indexes/nypd_hash_1000_arrest_key_extendible_hash.idx",
+          "options": {}
+        }
+      },
+      "row_count": 1000
+    },
+    "nypd_seq_1000": {
+      "name": "nypd_seq_1000",
+      "columns": [
+        {
+          "name": "arrest_key",
+          "type": "int",
+          "index": "sequential"
+        },
+        {
+          "name": "arrest_date",
+          "type": "str"
+        },
+        {
+          "name": "pd_cd",
+          "type": "int"
+        },
+        {
+          "name": "ky_cd",
+          "type": "int"
+        },
+        {
+          "name": "ofns_desc",
+          "type": "str"
+        },
+        {
+          "name": "law_cat_cd",
+          "type": "str"
+        },
+        {
+          "name": "arrest_boro",
+          "type": "str"
+        },
+        {
+          "name": "arrest_precinct",
+          "type": "int"
+        },
+        {
+          "name": "age_group",
+          "type": "str"
+        },
+        {
+          "name": "perp_sex",
+          "type": "str"
+        },
+        {
+          "name": "perp_race",
+          "type": "str"
+        },
+        {
+          "name": "longitude",
+          "type": "float"
+        },
+        {
+          "name": "latitude",
+          "type": "float"
+        }
+      ],
+      "data_file": "/Users/bladimiralferez/Desktop/2026/bd2/Proyecto_1/data/db/tables/nypd_seq_1000.tbl",
+      "indexes": {
+        "arrest_key": {
+          "table_name": "nypd_seq_1000",
+          "column_name": "arrest_key",
+          "index_type": "sequential",
+          "file_path": "/Users/bladimiralferez/Desktop/2026/bd2/Proyecto_1/data/db/indexes/nypd_seq_1000_arrest_key_sequential.idx",
+          "options": {}
+        }
+      },
+      "row_count": 1000
+    },
+    "nypd_spatial_1000": {
+      "name": "nypd_spatial_1000",
+      "columns": [
+        {
+          "name": "arrest_key",
+          "type": "int"
+        },
+        {
+          "name": "longitude",
+          "type": "float",
+          "index": "rtree"
+        },
+        {
+          "name": "latitude",
+          "type": "float"
+        }
+      ],
+      "data_file": "/Users/bladimiralferez/Desktop/2026/bd2/Proyecto_1/data/db/tables/nypd_spatial_1000.tbl",
+      "indexes": {
+        "longitude": {
+          "table_name": "nypd_spatial_1000",
+          "column_name": "longitude",
+          "index_type": "rtree",
+          "file_path": "/Users/bladimiralferez/Desktop/2026/bd2/Proyecto_1/data/db/indexes/nypd_spatial_1000_longitude_rtree.idx",
+          "options": {}
+        }
+      },
+      "row_count": 1000
+    }
+  }
+}

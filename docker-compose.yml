@@ -1,0 +1,12 @@
+services:
+  mini-dbms:
+    build: .
+    container_name: mini-dbms
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/app/data
+      - ./experimental_results:/app/experimental_results
+    environment:
+      - PYTHONPATH=/app
+    restart: unless-stopped

@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mini DBMS Admin</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/material-darker.min.css" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">DB</div>
+        <div>
+          <h1>Mini DBMS</h1>
+          <span>Admin Console</span>
+        </div>
+      </div>
+
+
+      <section class="panel compact upload-panel">
+        <div class="section-title">Agregar CSV</div>
+        <form id="csv-upload-form">
+          <label class="file-picker">
+            <span id="csv-file-label">Seleccionar archivo .csv</span>
+            <input id="csv-file" name="file" type="file" accept=".csv,text/csv" />
+          </label>
+          <input id="csv-table-name" name="table_name" class="text-input" type="text" placeholder="Nombre de tabla opcional" />
+          <button id="btn-upload-csv" class="primary full" type="submit">Subir CSV y generar SQL</button>
+          <small id="csv-upload-status" class="hint">Luego ejecuta el CREATE TABLE ... FROM FILE generado.</small>
+        </form>
+      </section>
+
+      <section class="panel compact">
+        <div class="section-title">Tablas</div>
+        <div id="tables-list" class="tree-empty">Sin tablas cargadas</div>
+      </section>
+
+    </aside>
+
+    <main class="workspace">
+      <header class="topbar">
+        <div>
+          <h2>Editor SQL</h2>
+          <p>Ejecuta consultas sobre índices paginados: Sequential File, B+ Tree, Extendible Hashing y R-Tree.</p>
+        </div>
+        <div class="topbar-actions">
+          <button id="btn-clear" class="ghost">Limpiar</button>
+          <button id="btn-run" class="primary">Ejecutar ▶</button>
+        </div>
+      </header>
+
+      <section class="editor-card">
+<textarea id="sql-editor">-- Sube un CSV real desde el panel izquierdo.
+-- Luego revisa y ejecuta el CREATE TABLE ... FROM FILE generado.
+-- Escribe aquí tus consultas SQL.</textarea>
+      </section>
+
+      <section class="stats-grid">
+        <article class="stat-card">
+          <span>Lecturas</span>
+          <strong id="stat-reads">0</strong>
+          <small>páginas leídas</small>
+        </article>
+        <article class="stat-card">
+          <span>Escrituras</span>
+          <strong id="stat-writes">0</strong>
+          <small>páginas escritas</small>
+        </article>
+        <article class="stat-card">
+          <span>Total I/O</span>
+          <strong id="stat-accesses">0</strong>
+          <small>read + write</small>
+        </article>
+        <article class="stat-card">
+          <span>Tiempo</span>
+          <strong id="stat-time">0.000 ms</strong>
+          <small>última consulta</small>
+        </article>
+        <article class="stat-card wide">
+          <span>Índice usado</span>
+          <strong id="stat-index">-</strong>
+          <small id="stat-message">Esperando ejecución</small>
+        </article>
+      </section>
+
+      <section class="output-layout">
+        <div class="result-card">
+          <div class="tabs">
+            <button class="tab active" data-tab="results">Resultados</button>
+            <button class="tab" data-tab="log">Log</button>
+            <button class="tab" data-tab="spatial">R-Tree</button>
+          </div>
+
+          <div id="tab-results" class="tab-pane active">
+            <div id="status-banner" class="status neutral">Ejecuta una consulta para ver resultados.</div>
+            <div class="table-wrap">
+              <table id="result-table">
+                <thead></thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+
+          <div id="tab-log" class="tab-pane">
+            <div class="log-toolbar">
+              <span>Historial de ejecución</span>
+              <button id="btn-copy-log" class="ghost small">Copiar log</button>
+            </div>
+            <pre id="execution-log" class="execution-log">Sin ejecuciones todavía.</pre>
+          </div>
+
+          <div id="tab-spatial" class="tab-pane">
+            <div class="spatial-header">
+              <div>
+                <strong>Visualización R-Tree</strong>
+                <p id="spatial-note">Ejecuta una consulta POINT/RADIUS o POINT/K para graficar los puntos.</p>
+              </div>
+              <div class="legend">
+                <span><i class="dot query"></i> Punto consulta</span>
+                <span><i class="dot match"></i> Resultado</span>
+              </div>
+            </div>
+            <canvas id="spatial-canvas" width="920" height="420"></canvas>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/sql/sql.min.js"></script>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
